@@ -18,6 +18,6 @@ To run in dev setup, you need  Python 2.7 installed and the `BeautifulSoup` pack
 
 #####Execution:
 
-Enter the *crackmeup* folder and in terminal, run `python main.py`.
+Enter the *crackmeup* folder and in terminal, run `python crackmeup.py`.
 
 Enjoy your random joke!
