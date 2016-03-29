@@ -11,4 +11,4 @@ def getJoke(category):
 	jokeSectionText = soup.body.findAll('tr')[1].findAll('td')[2].findAll('p')[1].get_text() # magic
 	# The joke ends at the keyword 'Over'
 	joke = jokeSectionText[:jokeSectionText.index('Over')].strip()
-	return joke
+	return joke.strip()

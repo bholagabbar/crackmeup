@@ -1,35 +1,33 @@
-import random
-
 from randomjoke_dot_com import all_categories
 
+import urllib
+import random
+from random import randint
+
 from bs4 import BeautifulSoup
-from selenium import webdriver
 
-def jokescc():
 
-	#selenium for PhantomJS
-	driver = webdriver.PhantomJS()
-	driver.get('http://jokes.cc.com/')
-	#fetch HTML source code after rendering
-	soupFromJokesCC = BeautifulSoup(driver.page_source)
-	# locate the link in HTML
-	randomJokeLink = soupFromJokesCC.findAll('div', {'id':'random_joke'})[0].findAll('a')[0]['href'] 
-	# now go to that page to scrape the joke from there
-	driver.get(str(randomJokeLink))
-	#driver.quit()
-	# Convert to BeautifulSoup object for easy parsing
-	soupToGetJokeFrom = BeautifulSoup(driver.page_source)
-	# Locate joke to parse as a list of <p>s
-	jokeData = soupToGetJokeFrom.findAll('div', {'class':'content_wrap'})[0].findAll('p')
-	# Concatenate them into one string and get the joke
-	joke = ''
-	for sectionsInJokes in jokeData:
-		currSection = str(sectionsInJokes)
-		#Remove <p>, </p> and whitespaces
-		joke += currSection[3:len(currSection)-4].strip()+"\n"
-	print joke
+def jokesDotCCDotcom():
 
-def randomjokescc():
+	'''to get random jokes from jokes.cc.com, we're going to use the API I dug up from their site (#sweg).
+	-Send a request to http://jokes.cc.com/feeds/random/(any number between 1-6811)
+	-Data recieved is in JSON
+	-Extract this link, send a urllib request there and scrape out the joke from the HTML recieved
+	'''
+	randomLinkToGoToAPI = 'http://jokes.cc.com/feeds/random/' + str(randint(1, 6811))
+	JSONData = urllib.urlopen(randomLinkToGoToAPI).read()
+	#parse data
+	parsedJokeLink = JSONData[JSONData.index('http') : JSONData.index('","queryString')].replace('\\',"")
+	#Now send a request to parse this random joke link
+	handle = urllib.urlopen(parsedJokeLink)
+	htmlGunk =  handle.read()
+	soup = BeautifulSoup(htmlGunk, "html.parser")
+	jokeData = soup.findAll('div', {'class':'content_wrap'})[0].get_text()
+	if 'Next' in jokeData:
+		jokeData = jokeData[jokeData.index('Next')+5:]
+	print jokeData
+
+def randomjokesDotcom():
 	categories = {'Random':'haha', 'One Liners':'oneliners', 'True Stories':'news',
 	'Signs of Our Times':'signs', 'Nerdy Jokes':'nerd','Quotes':'quotes',
 	'Professional':'professional', 'Light Bulb':'lightbulb', 
@@ -39,6 +37,10 @@ def randomjokescc():
 
 	random_category = categories[random.choice(categories.keys())]
 
-	print all_categories.getJoke(random_category)
+	print all_categories.getJoke(random_category).strip()
 
-jokescc()
+whichSite = randint(0,1)
+if whichSite:
+	jokesDotCCDotcom()
+else:
+	randomjokesDotcom()
