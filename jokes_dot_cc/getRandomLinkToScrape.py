@@ -1,9 +1,9 @@
 import urllib
 from bs4 import BeautifulSoup
 
-urlToRead = "http://jokes.cc.com";
-handle = urllib.urlopen(urlToRead)
-htmlGunk =  handle.read()
+
+htmlGunk = open('/home/shreyans/Desktop/crackmeup/check.html', 'r').read()
+print type(htmlGunk)
 soup = BeautifulSoup(htmlGunk, "html.parser")
 # print soup.prettify().encode('utf-8')
 # Find out the exact position of the joke in the page

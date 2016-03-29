@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+ghostdriver.log
+
 # Distribution / packaging
 .Python
 env/
