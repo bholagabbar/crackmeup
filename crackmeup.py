@@ -1,5 +1,3 @@
-from randomjoke_dot_com import all_categories
-
 import urllib
 import random
 from random import randint
@@ -25,7 +23,8 @@ def jokesDotCCDotcom():
 	jokeData = soup.findAll('div', {'class':'content_wrap'})[0].get_text()
 	if 'Next' in jokeData:
 		jokeData = jokeData[jokeData.index('Next')+5:]
-	print jokeData
+	return jokeData
+	
 
 def randomjokesDotcom():
 	categories = {'Random':'haha', 'One Liners':'oneliners', 'True Stories':'news',
@@ -35,12 +34,24 @@ def randomjokesDotcom():
 	'Gross':'gross', 'Blondes':'blonde', 'Politics':'politics', 'Just do it':'doit',
 	'Laws':'laws', 'PG 13':'dirty', 'Racist':'ethnic'}
 
-	random_category = categories[random.choice(categories.keys())]
+	category = categories[random.choice(categories.keys())]
 
-	print all_categories.getJoke(random_category).strip()
+	urlToRead = "http://www.randomjoke.com/topic/" + (category) + (".php")
+	handle = urllib.urlopen(urlToRead)
+	htmlGunk =  handle.read()
+	soup = BeautifulSoup(htmlGunk, "html.parser")
+	#print soup.prettify().encode('utf-8')
+	# Find out the exact position of the joke in the page
+	jokeSectionText = soup.body.findAll('tr')[1].findAll('td')[2].findAll('p')[1].get_text() # magic
+	# The joke ends at the keyword 'Over'
+	joke = jokeSectionText[:jokeSectionText.index('Over')].strip()
+	return joke
 
 whichSite = randint(0,1)
 if whichSite:
-	jokesDotCCDotcom()
+	print "\n" + jokesDotCCDotcom()
+	print "\nSource - jokes.cc.com"
+
 else:
-	randomjokesDotcom()
+	print "\n" + randomjokesDotcom()
+	print "\nSource - randomjoke.com"
