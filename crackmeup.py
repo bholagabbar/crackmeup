@@ -4,7 +4,6 @@ from random import randint
 
 from bs4 import BeautifulSoup
 
-
 def jokesDotCCDotcom():
 
 	'''to get random jokes from jokes.cc.com, we're going to use the API I dug up from their site (#sweg).
@@ -47,7 +46,7 @@ def randomjokesDotcom():
 	joke = jokeSectionText[:jokeSectionText.index('Over')].strip()
 	return joke
 
-whichSite = randint(0,1)
+whichSite = randint(1,1)
 if whichSite:
 	print "\n" + jokesDotCCDotcom()
 	print "\nSource - jokes.cc.com"
