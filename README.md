@@ -21,3 +21,6 @@ To run in dev setup, you need  Python 2.7 installed and the `BeautifulSoup` pack
 Enter the *crackmeup* folder and in terminal, run `python crackmeup.py`.
 
 Enjoy your random joke!
+
+#####Screenshot:
+![](http://i.imgur.com/lOGf3Pi.png)
