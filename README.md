@@ -23,4 +23,4 @@ Enter the *crackmeup* folder and in terminal, run `python crackmeup.py`.
 Enjoy your random joke!
 
 #####Screenshot:
-![](http://i.imgur.com/lOGf3Pi.png)
+![](http://i.imgur.com/vo3K5rP.png)
