@@ -12,7 +12,7 @@ def jokesDotCCDotcom():
 	-Data recieved is in JSON
 	-Extract this link, send a urllib request there and scrape out the joke from the HTML recieved
 	'''
-	randomLinkToGoToAPI = 'http://jokes.cc.com/feeds/random/' + str(randint(1, 6811))
+	randomLinkToGoToAPI = 'http://jokes.cc.com/feeds/random/' + str(randint(1, 6779))
 	JSONData = urllib.urlopen(randomLinkToGoToAPI).read()
 	#parse data
 	parsedJokeLink = JSONData[JSONData.index('http') : JSONData.index('","queryString')].replace('\\',"")
