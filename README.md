@@ -1,7 +1,4 @@
-###NOTE: crackmeup is now deprecated and has now transmogrified into a twitter bot and a joke API. Say hi to the bot [@crackmeupbro](https://twitter.com/crackmupbro) and find the API at [crackmeup-api.herokuapp.com](crackmeup-api.herokuapp.com) with the source code at [crackmeup-api](https://github.com/bholagabbar/crackmeup-api)
-
-#####The source code for the bot has not been made public due to the twitter API keys being used. Please contact me if you wish to access the same.
-
+##The original crackmeup has transmogrified into the [CrackMeUp Twitter Bot](https://github.com/bholagabbar/crackmeup-bot) and the [CrackMeUp Joke API](https://github.com/bholagabbar/crackmeup-api)! Say hi to the bot on twitter [@crackmeupbot](https://twitter.com/crackmeupbot) and find the API at [crackmeup-api.herokuapp.com](crackmeup-api.herokuapp.com).
 
 #crackmeup
 
