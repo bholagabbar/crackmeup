@@ -10,7 +10,7 @@ To run in dev setup, you need  Python 2.7 installed and the `BeautifulSoup` pack
 
 ##### Installation:
 
-* Get Python [here](https://www.python.org/downloads/
+* Get Python [here](https://www.python.org/downloads/)
 * Installing BeautifulSoup:
     1. Go to the directory where Python is installed.
     2. Enter the *Scripts* folder
